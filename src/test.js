@@ -36,8 +36,7 @@ test('returns CI environment variables', t => {
   getCiEnv(
     {
       ...baseContext,
-      CIRCLE_PULL_REQUEST: 'true',
-      CIRCLE_PR_NUMBER: 7,
+      CIRCLE_PULL_REQUEST: 'https://github.com/Siilwyn/nowlify/pull/7',
       CIRCLE_BRANCH: 'master',
     },
     'circleCi',
