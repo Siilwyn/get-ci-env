@@ -21,7 +21,8 @@ const envMapping = env => ({
     travis: env.TRAVIS_REPO_SLUG && env.TRAVIS_REPO_SLUG.split('/')[1],
   },
   prNumber: {
-    circleCi: env.CIRCLE_PR_NUMBER,
+    circleCi:
+      env.CIRCLE_PULL_REQUEST && env.CIRCLE_PULL_REQUEST.split('/').pop(),
     travis: env.TRAVIS_PULL_REQUEST,
   },
 });
