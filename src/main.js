@@ -21,12 +21,14 @@ const envMapping = env => ({
     travis: env.TRAVIS_REPO_SLUG && env.TRAVIS_REPO_SLUG.split('/')[1],
   },
   prNumber: {
-    circleCi: env.CI_PULL_REQUEST && env.CI_PULL_REQUEST.split('/').pop(),
+    circleCi: env.CIRCLE_PULL_REQUEST && env.CIRCLE_PULL_REQUEST.split('/').pop(),
     travis: env.TRAVIS_PULL_REQUEST,
   },
 });
 
 function getCiService(env) {
+  console.log(env.CI_PULL_REQUEST);
+  console.log(env.CI_PULL_REQUEST && env.CI_PULL_REQUEST.split('/').pop());
   return Object.entries({
     travis: env.TRAVIS,
     circleCi: env.CIRCLECI,

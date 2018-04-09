@@ -45,7 +45,7 @@ test('returns CI environment variables', t => {
       result,
       {
         ...baseResult,
-        pr: { number: 7 },
+        pr: { number: '7' },
       },
       'pull request context',
     ),
