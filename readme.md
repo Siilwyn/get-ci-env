@@ -8,7 +8,7 @@ Get and normalize the environment variables from continuous integration services
 - Logically nested data for concise naming and easy detection of pull request context: `if (ciEnvOutput.pr) { ... }`.
 
 ## Install
-`npm install get-ci-env --save-dev`
+`npm install get-ci-env`
 
 ## Usage
 Example usage when running inside CircleCI:
