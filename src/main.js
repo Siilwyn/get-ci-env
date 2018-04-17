@@ -28,13 +28,14 @@ const envMapping = env => ({
 });
 
 function getCiService(env) {
-  return Object.entries({
+  const service = Object.entries({
     travis: env.TRAVIS,
     circleCi: env.CIRCLECI,
-  }).reduce((matches, [service, match]) => {
-    if (match) return Promise.resolve(service);
-    return Promise.reject('No matching CI service environment.');
-  });
+  }).find(([service, match]) => match);
+
+  return service
+    ? Promise.resolve(service[0])
+    : Promise.reject('No matching CI service environment.');
 }
 
 function normalizeCiEnv(env, service) {
@@ -64,6 +65,6 @@ function getPrInfo(env, service, variableMapping) {
 
 function isPr(env) {
   return [env.CIRCLE_PULL_REQUEST, env.TRAVIS_PULL_REQUEST].some(
-    ciVariable => ciVariable && ciVariable !== 'false',
+    ciVariable => ciVariable && ciVariable !== 'false'
   );
 }
