@@ -1,12 +1,12 @@
 'use strict';
 
-const assert = require('assert');
 const test = require('tape');
 const getCiEnv = require('./main.js');
 
 test('handles different contexts', t => {
-  t.plan(2);
+  t.plan(3);
   getCiEnv({ CIRCLECI: 'true' }).then(t.ok);
+  getCiEnv({ TRAVIS: 'true' }).then(t.ok);
   getCiEnv({}).catch(t.ok);
 });
 
@@ -22,7 +22,7 @@ test('returns CI environment variables', t => {
     CIRCLE_PULL_REQUEST: 'false',
   };
 
-  const baseResult = {
+  const expectedBaseResult = {
     service: 'circleCi',
     branch: 'master',
     commit: 'abc',
@@ -30,7 +30,7 @@ test('returns CI environment variables', t => {
   };
 
   getCiEnv(baseContext, 'circleCi').then(result =>
-    t.deepEqual(result, baseResult, 'normal context'),
+    t.deepEqual(result, expectedBaseResult, 'normal context'),
   );
 
   getCiEnv(
@@ -44,7 +44,7 @@ test('returns CI environment variables', t => {
     t.deepEqual(
       result,
       {
-        ...baseResult,
+        ...expectedBaseResult,
         pr: { number: '7' },
       },
       'pull request context',
