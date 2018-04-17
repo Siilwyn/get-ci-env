@@ -16,15 +16,6 @@ Example usage when running inside CircleCI:
 const getCiEnv = require('get-ci-env');
 
 getCiEnv().then(console.log);
-/*
-{
-  service: 'circleCi',
-  branch: 'master',
-  commit: 'abc',
-  repo: { owner: 'Selwyn', name: 'hedgehogs' },
-  pr: { number: '3' },
-}
-*/
 ```
 Resulting in the output:
 ```js
@@ -33,6 +24,7 @@ Resulting in the output:
   branch: 'master',
   commit: 'abc',
   repo: { owner: 'Selwyn', name: 'hedgehogs' },
+  pr: { number: '3' },
 }
 ```
 
