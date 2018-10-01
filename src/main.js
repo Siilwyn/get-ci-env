@@ -6,7 +6,7 @@ module.exports = (env = process.env) =>
 const envMapping = env => ({
   branch: {
     circleCi: env.CIRCLE_BRANCH,
-    travis: env.TRAVIS_PULL_REQUEST_SHA || env.TRAVIS_COMMIT,
+    travis: env.TRAVIS_PULL_REQUEST_BRANCH || env.TRAVIS_BRANCH,
   },
   commit: {
     circleCi: env.CIRCLE_SHA1,
