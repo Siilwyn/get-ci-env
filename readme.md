@@ -31,8 +31,9 @@ Resulting in the output:
 ```
 
 ## Supported services
-- Travis CI
-- CircleCI
+- [CircleCI](https://circleci.com/)
+- [Codefresh](https://codefresh.io/)
+- [Travis CI](https://travis-ci.com/)
 
 ## Variables
 - **service**: Camel-cased CI service name

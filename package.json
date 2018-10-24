@@ -10,13 +10,15 @@
     "test": "node ./src/test.js",
     "test:ci": "npm test && npm run format -- --list-different",
     "format": "prettier --write --single-quote --trailing-comma all src/*.js",
-    "preversion": "npm test",
-    "postversion": "git push --follow-tags && npm publish"
+    "preversion": "npm test"
   },
   "dependencies": {},
   "devDependencies": {
     "prettier": "^1.11.1",
     "tape": "^4.9.0"
+  },
+  "engines": {
+    "node": ">= 8"
   },
   "repository": {
     "type": "git",
@@ -30,6 +32,7 @@
     "continuous integration",
     "environment variables",
     "circleci",
+    "codefresh",
     "travis ci"
   ]
 }
