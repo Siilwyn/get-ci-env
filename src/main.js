@@ -1,9 +1,13 @@
 'use strict';
 
 module.exports = (env = process.env) =>
-  getCiService(env).then(service => normalizeCiEnv(env, service));
+  getCiService(env).then(service => normalizeCiEnv(envMapping(env), service));
 
 const envMapping = env => ({
+  detection: {
+    circleCi: 'CIRCLECI',
+    travis: 'TRAVIS',
+  },
   branch: {
     circleCi: env.CIRCLE_BRANCH,
     travis: env.TRAVIS_PULL_REQUEST_BRANCH || env.TRAVIS_BRANCH,
@@ -20,6 +24,10 @@ const envMapping = env => ({
     circleCi: env.CIRCLE_PROJECT_REPONAME,
     travis: env.TRAVIS_REPO_SLUG && env.TRAVIS_REPO_SLUG.split('/')[1],
   },
+  isPr: {
+    circleCi: env.CIRCLE_PULL_REQUEST,
+    travis: env.TRAVIS_PULL_REQUEST,
+  },
   prNumber: {
     circleCi:
       env.CIRCLE_PULL_REQUEST && env.CIRCLE_PULL_REQUEST.split('/').pop(),
@@ -28,43 +36,42 @@ const envMapping = env => ({
 });
 
 function getCiService(env) {
-  const service = Object.entries({
-    travis: env.TRAVIS,
-    circleCi: env.CIRCLECI,
-  }).find(([service, match]) => match);
+  const service = Object.entries(envMapping(env).detection).find(
+    ([service, match]) => env[match],
+  );
 
   return service
     ? Promise.resolve(service[0])
-    : Promise.reject('No matching CI service environment.');
+    : Promise.reject(
+        `No supported CI service found, none of the following environment value is set: ${Object.values(
+          envMapping(env).detection,
+        ).join(', ')}.`,
+      );
 }
 
-function normalizeCiEnv(env, service) {
-  const variableMapping = envMapping(env);
-
+function normalizeCiEnv(ciEnvMapping, service) {
   return {
     service,
-    branch: variableMapping.branch[service],
-    commit: variableMapping.commit[service],
+    branch: ciEnvMapping.branch[service],
+    commit: ciEnvMapping.commit[service],
     repo: {
-      owner: variableMapping.repoOwner[service],
-      name: variableMapping.repoName[service],
+      owner: ciEnvMapping.repoOwner[service],
+      name: ciEnvMapping.repoName[service],
     },
-    ...getPrInfo(env, service, variableMapping),
+    ...getPrInfo(ciEnvMapping, service),
   };
 }
 
-function getPrInfo(env, service, variableMapping) {
-  if (!isPr(env)) return;
+function getPrInfo(ciEnvMapping, service) {
+  if (!isTruthyCiVariable(ciEnvMapping.isPr[service])) return;
 
   return {
     pr: {
-      number: variableMapping.prNumber[service],
+      number: ciEnvMapping.prNumber[service],
     },
   };
 }
 
-function isPr(env) {
-  return [env.CIRCLE_PULL_REQUEST, env.TRAVIS_PULL_REQUEST].some(
-    ciVariable => ciVariable && ciVariable !== 'false',
-  );
+function isTruthyCiVariable(ciVariable) {
+  return ciVariable && ciVariable !== 'false';
 }
