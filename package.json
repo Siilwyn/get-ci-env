@@ -1,6 +1,6 @@
 {
   "name": "get-ci-env",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Get and normalize continuous integration service environment variables.",
   "main": "src/main.js",
   "files": [
