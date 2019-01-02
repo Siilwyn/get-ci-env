@@ -7,37 +7,44 @@ const envMapping = env => ({
   detection: {
     circleCi: 'CIRCLECI',
     codefresh: 'CF_BUILD_ID',
+    gitlabCi: 'GITLAB_CI',
     travis: 'TRAVIS',
   },
   branch: {
     circleCi: env.CIRCLE_BRANCH,
     codefresh: env.CF_BRANCH,
+    gitlabCi: env.CI_COMMIT_REF_NAME,
     travis: env.TRAVIS_PULL_REQUEST_BRANCH || env.TRAVIS_BRANCH,
   },
   commit: {
     circleCi: env.CIRCLE_SHA1,
     codefresh: env.CF_REVISION,
+    gitlabCi: env.CI_COMMIT_SHA,
     travis: env.TRAVIS_PULL_REQUEST_SHA || env.TRAVIS_COMMIT,
   },
   repoOwner: {
     circleCi: env.CIRCLE_PROJECT_USERNAME,
     codefresh: env.CF_REPO_OWNER,
+    gitlabCi: env.CI_PROJECT_PATH,
     travis: env.TRAVIS_REPO_SLUG && env.TRAVIS_REPO_SLUG.split('/')[0],
   },
   repoName: {
     circleCi: env.CIRCLE_PROJECT_REPONAME,
     codefresh: env.CF_REPO_NAME,
+    gitlabCi: env.CI_PROJECT_NAME,
     travis: env.TRAVIS_REPO_SLUG && env.TRAVIS_REPO_SLUG.split('/')[1],
   },
   isPr: {
     circleCi: env.CIRCLE_PULL_REQUEST,
     codefresh: env.CF_PULL_REQUEST_NUMBER,
+    gitlabCi: env.CI_MERGE_REQUEST_IID,
     travis: env.TRAVIS_PULL_REQUEST,
   },
   prNumber: {
     circleCi:
       env.CIRCLE_PULL_REQUEST && env.CIRCLE_PULL_REQUEST.split('/').pop(),
     codefresh: env.CF_PULL_REQUEST_NUMBER,
+    gitlabCi: env.CI_MERGE_REQUEST_IID,
     travis: env.TRAVIS_PULL_REQUEST,
   },
 });

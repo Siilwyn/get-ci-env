@@ -33,6 +33,7 @@
     "environment variables",
     "circleci",
     "codefresh",
+    "gitlab ci",
     "travis ci"
   ]
 }
