@@ -7,5 +7,18 @@ node_js:
 script:
   - npm run test:ci
 
+branches:
+  only:
+    - master
+    - /v\d+\.\d+.+/
+
+deploy:
+  provider: npm
+  email: "talk@selwyn.cc"
+  api_key: $NPM_TOKEN
+  on:
+    branch: master
+    tags: true
+
 notifications:
   email: false
