@@ -33,6 +33,7 @@ Resulting in the output:
 ## Supported services
 - [CircleCI](https://circleci.com/)
 - [Codefresh](https://codefresh.io/)
+- [GitLab CI](https://about.gitlab.com/product/continuous-integration/)
 - [Travis CI](https://travis-ci.com/)
 
 ## Variables
