@@ -2,19 +2,23 @@
   "name": "get-ci-env",
   "version": "1.2.0",
   "description": "Get and normalize continuous integration service environment variables.",
-  "main": "src/main.js",
+  "main": "src/main",
   "files": [
-    "$npm_package_main"
+    "src/main.js",
+    "src/main.mjs"
   ],
   "scripts": {
-    "test": "node ./src/test.js",
+    "build": "rollup src/main.mjs --format cjs --dir src",
+    "test": "node --experimental-modules ./src/test.mjs",
     "test:ci": "npm test && npm run format -- --list-different",
-    "format": "prettier --write --single-quote --trailing-comma all src/*.js",
-    "preversion": "npm test"
+    "format": "prettier --write --single-quote --trailing-comma all src/*.mjs",
+    "preversion": "npm test",
+    "prepack": "npm run build"
   },
   "dependencies": {},
   "devDependencies": {
     "prettier": "^1.11.1",
+    "rollup": "^1.0.2",
     "tape": "^4.9.0"
   },
   "engines": {
