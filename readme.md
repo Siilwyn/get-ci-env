@@ -15,7 +15,7 @@ Get and normalize the environment variables from continuous integration services
 ## Usage
 Example usage when running inside CircleCI:
 ```js
-const getCiEnv = require('get-ci-env');
+import getCiEnv from 'get-ci-env';
 
 getCiEnv().then(console.log);
 ```

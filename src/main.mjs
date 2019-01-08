@@ -1,6 +1,4 @@
-'use strict';
-
-module.exports = (env = process.env) =>
+export default (env = process.env) =>
   getCiService(env).then(service => normalizeCiEnv(envMapping(env), service));
 
 const envMapping = env => ({

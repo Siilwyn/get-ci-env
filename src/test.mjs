@@ -1,7 +1,5 @@
-'use strict';
-
-const test = require('tape');
-const getCiEnv = require('./main.js');
+import test from 'tape';
+import getCiEnv from './main.mjs';
 
 test('handles different contexts', t => {
   t.plan(3);
