@@ -5,7 +5,7 @@
 [![LGTM Grade][lgtm-icon]][lgtm]
 
 Get and normalize the environment variables from continuous integration services. This package is similar to [pvdlg's env-ci](https://github.com/pvdlg/env-ci) but goes for a simpler approach. This results in a more restricted and lightweight (zero dependencies) package:
-- Only CI services that contain **all** values in the environment are supported, taking away the need to manually check the returned data.
+- Only CI services that contain all expected values in the environment are supported, taking away the need to manually check the returned data.
 - Return a promise to indicate if a valid CI environment is detected for explicit error handling.
 - Logically nested data for concise naming and easy detection of pull request context: `if (ciEnvOutput.pr) { ... }`.
 
