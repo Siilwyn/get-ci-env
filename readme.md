@@ -31,6 +31,7 @@ Resulting in the output:
 ```
 
 ## Supported services
+- [Buildkite](https://buildkite.com/)
 - [CircleCI](https://circleci.com/)
 - [Codefresh](https://codefresh.io/)
 - [GitLab CI](https://about.gitlab.com/product/continuous-integration/)

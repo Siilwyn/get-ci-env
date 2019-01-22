@@ -3,42 +3,49 @@ export default (env = process.env) =>
 
 const envMapping = env => ({
   detection: {
+    buildkite: 'BUILDKITE',
     circleCi: 'CIRCLECI',
     codefresh: 'CF_BUILD_ID',
     gitlabCi: 'GITLAB_CI',
     travis: 'TRAVIS',
   },
   branch: {
+    buildkite: env.BUILDKITE_BRANCH,
     circleCi: env.CIRCLE_BRANCH,
     codefresh: env.CF_BRANCH,
     gitlabCi: env.CI_COMMIT_REF_NAME,
     travis: env.TRAVIS_PULL_REQUEST_BRANCH || env.TRAVIS_BRANCH,
   },
   commit: {
+    buildkite: env.BUILDKITE_COMMIT,
     circleCi: env.CIRCLE_SHA1,
     codefresh: env.CF_REVISION,
     gitlabCi: env.CI_COMMIT_SHA,
     travis: env.TRAVIS_PULL_REQUEST_SHA || env.TRAVIS_COMMIT,
   },
   repoOwner: {
+    buildkite: env.BUILDKITE_ORGANIZATION_SLUG,
     circleCi: env.CIRCLE_PROJECT_USERNAME,
     codefresh: env.CF_REPO_OWNER,
     gitlabCi: env.CI_PROJECT_PATH,
     travis: env.TRAVIS_REPO_SLUG && env.TRAVIS_REPO_SLUG.split('/')[0],
   },
   repoName: {
+    buildkite: env.BUILDKITE_PIPELINE_SLUG,
     circleCi: env.CIRCLE_PROJECT_REPONAME,
     codefresh: env.CF_REPO_NAME,
     gitlabCi: env.CI_PROJECT_NAME,
     travis: env.TRAVIS_REPO_SLUG && env.TRAVIS_REPO_SLUG.split('/')[1],
   },
   isPr: {
+    buildkite: env.BUILDKITE_PULL_REQUEST,
     circleCi: env.CIRCLE_PULL_REQUEST,
     codefresh: env.CF_PULL_REQUEST_NUMBER,
     gitlabCi: env.CI_MERGE_REQUEST_IID,
     travis: env.TRAVIS_PULL_REQUEST,
   },
   prNumber: {
+    buildkite: env.BUILDKITE_PULL_REQUEST,
     circleCi:
       env.CIRCLE_PULL_REQUEST && env.CIRCLE_PULL_REQUEST.split('/').pop(),
     codefresh: env.CF_PULL_REQUEST_NUMBER,
