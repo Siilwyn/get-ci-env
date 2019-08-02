@@ -1,8 +1,8 @@
 language: node_js
 
 node_js:
+  - 12
   - 10
-  - 8
 
 script:
   - npm run test:ci
@@ -20,6 +20,3 @@ deploy:
   on:
     branch: master
     tags: true
-
-notifications:
-  email: false
