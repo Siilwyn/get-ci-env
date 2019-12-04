@@ -23,7 +23,7 @@
   "dependencies": {},
   "devDependencies": {
     "prettier": "^1.19.1",
-    "rollup": "^1.26.3",
+    "rollup": "^1.27.8",
     "tape": "^4.11.0"
   },
   "engines": {
