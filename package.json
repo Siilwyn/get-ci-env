@@ -24,7 +24,7 @@
   "devDependencies": {
     "prettier": "^1.19.1",
     "rollup": "^1.29.0",
-    "tape": "^4.12.1"
+    "tape": "^4.13.0"
   },
   "engines": {
     "node": ">= 10"
