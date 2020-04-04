@@ -1,7 +1,7 @@
 export default (env = process.env) =>
-  getCiService(env).then(service => normalizeCiEnv(envMapping(env), service));
+  getCiService(env).then((service) => normalizeCiEnv(envMapping(env), service));
 
-const envMapping = env => ({
+const envMapping = (env) => ({
   detection: {
     buildkite: 'BUILDKITE',
     circleCi: 'CIRCLECI',
