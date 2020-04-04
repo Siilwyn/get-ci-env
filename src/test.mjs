@@ -1,14 +1,14 @@
 import test from 'tape';
 import getCiEnv from './main.mjs';
 
-test('handles different contexts', t => {
+test('handles different contexts', (t) => {
   t.plan(3);
   getCiEnv({ CIRCLECI: 'true' }).then(t.ok);
   getCiEnv({ TRAVIS: 'true' }).then(t.ok);
   getCiEnv({}).catch(t.ok);
 });
 
-test('returns CI environment variables', t => {
+test('returns CI environment variables', (t) => {
   t.plan(2);
 
   const baseContext = {
@@ -27,7 +27,7 @@ test('returns CI environment variables', t => {
     repo: { owner: 'Selwyn', name: 'hedgehogs' },
   };
 
-  getCiEnv(baseContext, 'circleCi').then(result =>
+  getCiEnv(baseContext, 'circleCi').then((result) =>
     t.deepEqual(result, expectedBaseResult, 'normal context'),
   );
 
@@ -38,7 +38,7 @@ test('returns CI environment variables', t => {
       CIRCLE_BRANCH: 'master',
     },
     'circleCi',
-  ).then(result =>
+  ).then((result) =>
     t.deepEqual(
       result,
       {
