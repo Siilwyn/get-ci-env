@@ -54,8 +54,8 @@ Type: `object`
 Default: `process.env`  
 The user environment.
 
-[travis]: https://travis-ci.org/Siilwyn/get-ci-env
-[travis-icon]: https://img.shields.io/travis/Siilwyn/get-ci-env/master.svg?style=flat-square
+[travis]: https://travis-ci.com/Siilwyn/get-ci-env
+[travis-icon]: https://img.shields.io/travis/com/Siilwyn/get-ci-env/master.svg?style=flat-square
 [lgtm]: https://lgtm.com/projects/g/Siilwyn/get-ci-env/
 [lgtm-icon]: https://img.shields.io/lgtm/grade/javascript/g/Siilwyn/get-ci-env.svg?style=flat-square
 [npm]: https://www.npmjs.com/package/get-ci-env
