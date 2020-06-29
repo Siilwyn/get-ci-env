@@ -13,6 +13,7 @@ branches:
     - /v\d+\.\d+.+/
 
 deploy:
+  skip_cleanup: true
   provider: npm
   email: "talk@selwyn.cc"
   api_key: $NPM_TOKEN
