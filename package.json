@@ -29,7 +29,7 @@
     "tape": "^5.0.1"
   },
   "engines": {
-    "node": ">= 10"
+    "node": ">=12.18.2"
   },
   "prettier": {
     "trailingComma": "all",
