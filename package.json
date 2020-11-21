@@ -5,16 +5,16 @@
   "type": "module",
   "main": "./src/main.cjs",
   "exports": {
-    "require": "./src/main.cjs",
-    "default": "./src/main.mjs"
+    "import": "./src/main.mjs",
+    "require": "./src/main.cjs"
   },
   "files": [
-    "src/main.cjs",
-    "src/main.mjs"
+    "src/main.mjs",
+    "src/main.cjs"
   ],
   "scripts": {
-    "build": "rollup src/main.mjs --format cjs --file src/main.cjs",
-    "test": "node --experimental-modules ./src/test.mjs",
+    "build": "rollup src/main.mjs --exports default --format cjs --file src/main.cjs",
+    "test": "node src/test.mjs",
     "test:ci": "npm run test && npm run lint",
     "lint": "npm run prettier -- --check",
     "format": "npm run prettier -- --write",
@@ -29,7 +29,7 @@
     "tape": "^5.0.1"
   },
   "engines": {
-    "node": ">= 10"
+    "node": ">= 12"
   },
   "prettier": {
     "trailingComma": "all",
