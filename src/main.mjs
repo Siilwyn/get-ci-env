@@ -3,36 +3,43 @@ export default (env = process.env) =>
 
 const envMapping = (env) => ({
   detection: {
+    appveyor: 'APPVEYOR',
     buildkite: 'BUILDKITE',
     codefresh: 'CF_BUILD_ID',
     gitlabCi: 'GITLAB_CI',
     travis: 'TRAVIS',
   },
   branch: {
+    appveyor:
+      env.APPVEYOR_PULL_REQUEST_HEAD_REPO_BRANCH || env.APPVEYOR_REPO_BRANCH,
     buildkite: env.BUILDKITE_BRANCH,
     codefresh: env.CF_BRANCH,
     gitlabCi: env.CI_COMMIT_REF_NAME,
     travis: env.TRAVIS_PULL_REQUEST_BRANCH || env.TRAVIS_BRANCH,
   },
   commit: {
+    appveyor: env.APPVEYOR_REPO_COMMIT,
     buildkite: env.BUILDKITE_COMMIT,
     codefresh: env.CF_REVISION,
     gitlabCi: env.CI_COMMIT_SHA,
     travis: env.TRAVIS_PULL_REQUEST_SHA || env.TRAVIS_COMMIT,
   },
   repoOwner: {
+    appveyor: env.APPVEYOR_REPO_NAME && env.APPVEYOR_REPO_NAME.split('/')[0],
     buildkite: env.BUILDKITE_ORGANIZATION_SLUG,
     codefresh: env.CF_REPO_OWNER,
     gitlabCi: env.CI_PROJECT_PATH,
     travis: env.TRAVIS_REPO_SLUG && env.TRAVIS_REPO_SLUG.split('/')[0],
   },
   repoName: {
+    appveyor: env.APPVEYOR_REPO_NAME && env.APPVEYOR_REPO_NAME.split('/')[1],
     buildkite: env.BUILDKITE_PIPELINE_SLUG,
     codefresh: env.CF_REPO_NAME,
     gitlabCi: env.CI_PROJECT_NAME,
     travis: env.TRAVIS_REPO_SLUG && env.TRAVIS_REPO_SLUG.split('/')[1],
   },
   isPr: {
+    appveyor: env.APPVEYOR_PULL_REQUEST_NUMBER,
     buildkite: env.BUILDKITE_PULL_REQUEST,
     codefresh: env.CF_PULL_REQUEST_NUMBER,
     gitlabCi: env.CI_MERGE_REQUEST_IID,
@@ -40,12 +47,14 @@ const envMapping = (env) => ({
   },
   pr: {
     number: {
+      appveyor: env.APPVEYOR_PULL_REQUEST_NUMBER,
       buildkite: env.BUILDKITE_PULL_REQUEST,
       codefresh: env.CF_PULL_REQUEST_NUMBER,
       gitlabCi: env.CI_MERGE_REQUEST_IID,
       travis: env.TRAVIS_PULL_REQUEST,
     },
     targetBranch: {
+      appveyor: env.APPVEYOR_REPO_BRANCH,
       buildkite: env.BUILDKITE_PULL_REQUEST_BASE_BRANCH,
       codefresh: env.CF_PULL_REQUEST_TARGET,
       gitlabCi: env.CI_MERGE_REQUEST_TARGET_BRANCH_NAME,

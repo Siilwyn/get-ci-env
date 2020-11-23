@@ -30,6 +30,7 @@ Resulting in the output:
 ```
 
 ## Supported services
+- [AppVeyor](https://appveyor.com/)
 - [Buildkite](https://buildkite.com/)
 - [Codefresh](https://codefresh.io/)
 - [GitLab CI](https://about.gitlab.com/product/continuous-integration/)
