@@ -25,7 +25,7 @@ Resulting in the output:
   branch: 'add-long-eared',
   commit: '1ef3f7c',
   repo: { owner: 'Selwyn', name: 'hedgehogs' },
-  pr: { number: '3' },
+  pr: { number: '3', branch: 'master' },
 }
 ```
 
@@ -37,13 +37,14 @@ Resulting in the output:
 
 ## Variables
 - **service**: Camel-cased CI service name
-- **branch**: Branch name containing the relevant commit
+- **branch**: Name of the the branch being built
 - **commit**: Commit SHA hash that triggered the CI build
 - **repo**:
   - **owner**: Name of the repository owner
   - **name**: Repository name
 - **pr**: *Only set when triggered by a pull request*
   - **number**: Pull request number
+  - **targetBranch**: Name of the base branch that the pull request is targeting
 
 ## API
 ### getCiEnv(env)

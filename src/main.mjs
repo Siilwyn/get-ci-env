@@ -38,13 +38,19 @@ const envMapping = (env) => ({
     gitlabCi: env.CI_MERGE_REQUEST_IID,
     travis: env.TRAVIS_PULL_REQUEST,
   },
-  prNumber: {
-    buildkite: env.BUILDKITE_PULL_REQUEST,
-    circleCi:
-      env.CIRCLE_PULL_REQUEST && env.CIRCLE_PULL_REQUEST.split('/').pop(),
-    codefresh: env.CF_PULL_REQUEST_NUMBER,
-    gitlabCi: env.CI_MERGE_REQUEST_IID,
-    travis: env.TRAVIS_PULL_REQUEST,
+  pr: {
+    number: {
+      buildkite: env.BUILDKITE_PULL_REQUEST,
+      codefresh: env.CF_PULL_REQUEST_NUMBER,
+      gitlabCi: env.CI_MERGE_REQUEST_IID,
+      travis: env.TRAVIS_PULL_REQUEST,
+    },
+    targetBranch: {
+      buildkite: env.BUILDKITE_PULL_REQUEST_BASE_BRANCH,
+      codefresh: env.CF_PULL_REQUEST_TARGET,
+      gitlabCi: env.CI_MERGE_REQUEST_TARGET_BRANCH_NAME,
+      travis: env.TRAVIS_BRANCH,
+    },
   },
 });
 
@@ -80,7 +86,8 @@ function getPrInfo(ciEnvMapping, service) {
 
   return {
     pr: {
-      number: ciEnvMapping.prNumber[service],
+      number: ciEnvMapping.pr.number[service],
+      targetBranch: ciEnvMapping.pr.targetBranch[service],
     },
   };
 }

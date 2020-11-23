@@ -32,19 +32,16 @@ test('returns CI environment variables', (t) => {
     t.is(result.pr, undefined, 'no pull request context');
   });
 
-  getCiEnv(
-    {
-      ...baseContext,
-      CIRCLE_PULL_REQUEST: 'https://github.com/Siilwyn/nowlify/pull/7',
-      CIRCLE_BRANCH: 'master',
-    },
-    'circleCi',
-  ).then((result) =>
+  getCiEnv({
+    ...baseContext,
+    BUILDKITE_PULL_REQUEST: '7',
+    BUILDKITE_PULL_REQUEST_BASE_BRANCH: 'master',
+  }).then((result) =>
     t.deepEqual(
       result,
       {
         ...expectedBaseResult,
-        pr: { number: '7' },
+        pr: { number: '7', targetBranch: 'master' },
       },
       'pull request context',
     ),
