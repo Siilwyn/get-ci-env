@@ -12,7 +12,7 @@ Get and normalize the environment variables from continuous integration services
 `npm install get-ci-env`
 
 ## Usage
-Example usage when running inside CircleCI:
+Example usage when running inside Buildkite:
 ```js
 import getCiEnv from 'get-ci-env';
 
@@ -21,9 +21,9 @@ getCiEnv().then(console.log);
 Resulting in the output:
 ```js
 {
-  service: 'circleCi',
-  branch: 'master',
-  commit: 'abc',
+  service: 'buildkite',
+  branch: 'add-long-eared',
+  commit: '1ef3f7c',
   repo: { owner: 'Selwyn', name: 'hedgehogs' },
   pr: { number: '3' },
 }
@@ -31,7 +31,6 @@ Resulting in the output:
 
 ## Supported services
 - [Buildkite](https://buildkite.com/)
-- [CircleCI](https://circleci.com/)
 - [Codefresh](https://codefresh.io/)
 - [GitLab CI](https://about.gitlab.com/product/continuous-integration/)
 - [Travis CI](https://travis-ci.com/)

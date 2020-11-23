@@ -3,33 +3,34 @@ import getCiEnv from './main.mjs';
 
 test('handles different contexts', (t) => {
   t.plan(3);
-  getCiEnv({ CIRCLECI: 'true' }).then(t.ok);
+  getCiEnv({ BUILDKITE: 'true' }).then(t.ok);
   getCiEnv({ TRAVIS: 'true' }).then(t.ok);
   getCiEnv({}).catch(t.ok);
 });
 
 test('returns CI environment variables', (t) => {
-  t.plan(2);
+  t.plan(3);
 
   const baseContext = {
-    CIRCLECI: 'true',
-    CIRCLE_BRANCH: 'master',
-    CIRCLE_SHA1: 'abc',
-    CIRCLE_PROJECT_USERNAME: 'Selwyn',
-    CIRCLE_PROJECT_REPONAME: 'hedgehogs',
-    CIRCLE_PULL_REQUEST: 'false',
+    BUILDKITE: 'true',
+    BUILDKITE_BRANCH: 'master',
+    BUILDKITE_COMMIT: 'abc',
+    BUILDKITE_ORGANIZATION_SLUG: 'Selwyn',
+    BUILDKITE_PIPELINE_SLUG: 'hedgehogs',
+    BUILDKITE_PULL_REQUEST: 'false',
   };
 
   const expectedBaseResult = {
-    service: 'circleCi',
+    service: 'buildkite',
     branch: 'master',
     commit: 'abc',
     repo: { owner: 'Selwyn', name: 'hedgehogs' },
   };
 
-  getCiEnv(baseContext, 'circleCi').then((result) =>
-    t.deepEqual(result, expectedBaseResult, 'normal context'),
-  );
+  getCiEnv(baseContext, 'buildkite').then((result) => {
+    t.deepEqual(result, expectedBaseResult, 'normal context');
+    t.is(result.pr, undefined, 'no pull request context');
+  });
 
   getCiEnv(
     {
