@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and follows [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] - 2020-11-24
+### Added
+- AppVeyor support.
+- Pull request target branch name.
+### Removed
+- CircleCI support.
+- Node.js 10 support.
+
 ## [1.3.0] - 2019-01-22
 ### Added
 - Buildkite support.
