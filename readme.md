@@ -1,7 +1,7 @@
 # get-ci-env
-[![Travis Build Status][travis-icon]][travis]
-[![LGTM Grade][lgtm-icon]][lgtm]
-[![npm][npm-icon]][npm]
+[![Travis Build Status][travis-badge]][travis]
+[![LGTM Grade][lgtm-badge]][lgtm]
+[![npm][npm-badge]][npm]
 
 Get and normalize the environment variables from continuous integration services. This package is similar to [pvdlg's env-ci](https://github.com/pvdlg/env-ci) but goes for a simpler approach. This results in a more restricted and lightweight (zero dependencies) package:
 - Only CI services that contain all expected values in the environment are supported, taking away the need to manually check the returned data.
@@ -56,8 +56,8 @@ Default: `process.env`
 The user environment.
 
 [travis]: https://travis-ci.com/Siilwyn/get-ci-env
-[travis-icon]: https://img.shields.io/travis/com/Siilwyn/get-ci-env/master.svg?style=flat-square
+[travis-badge]: https://api.travis-ci.com/Siilwyn/get-ci-env.svg
 [lgtm]: https://lgtm.com/projects/g/Siilwyn/get-ci-env/
-[lgtm-icon]: https://img.shields.io/lgtm/grade/javascript/g/Siilwyn/get-ci-env.svg?style=flat-square
+[lgtm-badge]: https://tiny-shields.voorhoede.workers.dev/service/lgtm/grade/javascript/g/Siilwyn/get-ci-env
 [npm]: https://www.npmjs.com/package/get-ci-env
-[npm-icon]: https://img.shields.io/npm/v/get-ci-env.svg?style=flat-square
+[npm-badge]: https://tiny-shields.voorhoede.workers.dev/service/npm/get-ci-env
