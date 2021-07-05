@@ -24,7 +24,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "prettier": "^2.3.1",
+    "prettier": "^2.3.2",
     "rollup": "^2.51.2",
     "tape": "^5.2.2"
   },
