@@ -58,6 +58,6 @@ The user environment.
 [travis]: https://travis-ci.com/Siilwyn/get-ci-env
 [travis-badge]: https://api.travis-ci.com/Siilwyn/get-ci-env.svg
 [lgtm]: https://lgtm.com/projects/g/Siilwyn/get-ci-env/
-[lgtm-badge]: https://tiny-shields.voorhoede.workers.dev/service/lgtm/grade/javascript/g/Siilwyn/get-ci-env
+[lgtm-badge]: https://tinyshields.dev/lgtm/grade/javascript/g/Siilwyn/get-ci-env.svg
 [npm]: https://www.npmjs.com/package/get-ci-env
-[npm-badge]: https://tiny-shields.voorhoede.workers.dev/service/npm/get-ci-env
+[npm-badge]: https://tinyshields.dev/npm/get-ci-env.svg
