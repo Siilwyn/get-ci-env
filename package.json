@@ -24,9 +24,9 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "prettier": "^2.4.1",
-    "rollup": "^2.59.0",
-    "tape": "^5.3.1"
+    "prettier": "^2.5.0",
+    "rollup": "^2.60.1",
+    "tape": "^5.3.2"
   },
   "engines": {
     "node": ">= 12"
